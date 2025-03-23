@@ -1,5 +1,7 @@
 select
+    md5(cast(const as varchar)) as id,
     const                       as imdb_id,
+    'imdb'                      as source,
     rating                      as rating,
     date(rating_date)           as rating_date,
     name_eng                    as title_english,
@@ -12,6 +14,5 @@ select
     genres                      as genres,
     votes_num                   as votes_num,
     date(release_date)          as release_date
-    directors                   as directors,
-    'imdb'                      as source
+    directors                   as directors
 from {{ source('film_ratings', 'updated_imdb_ratings') }}
