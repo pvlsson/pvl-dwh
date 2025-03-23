@@ -1,6 +1,6 @@
 [sqlfluff]
-templater = dbt-cloud
-dialect = snowflake
+templater = dbt
+dialect = redshift
 runaway_limit = 10
 max_line_length = 80
 indent_unit = space
