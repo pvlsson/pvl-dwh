@@ -17,7 +17,7 @@ profile_config = ProfileConfig(
 
 my_cosmos_dag = DbtDag(
     project_config=ProjectConfig(
-        f"{airflow_home}/dags/pvl-dwh",
+        f"{airflow_home}/dags/dbt/pvl_dwh",
     ),
     profile_config=profile_config,
     execution_config=ExecutionConfig(
