@@ -1,0 +1,40 @@
+models:
+  - name: film_ratings
+    description: History of personal film ratings with rating date from various source platforms
+    columns:
+      - name: id
+        description: The unique key of the film_ratings mart
+        data_tests:
+          - not_null
+          - unique
+      - name: source
+        description: Source platform name
+        data_tests:
+          - accepted_values:
+              values: ["imdb", "kp"]
+      - name: rating
+        description: My rating for the movie from 0 to 10
+      - name: rating_date
+        description: Date on which I rated the movie
+      - name: title_english
+        description: Movie title in English
+      - name: title_russian
+        description: Movie title in Russian
+      - name: title_original
+        description: Original movie title name (IMDB only)
+      - name: title_type
+        description: Type of content rated - movie or TV series (IMDB only)
+      - name: imdb_rating
+        description: Average IMDB rating for the movie from all user ratings (IMDB only)
+      - name: runtime
+        description: Movie length in minutes (IMDB only)
+      - name: release_year
+        description: Year in which the movie was released in theatres
+      - name: genres
+        description: Genres, to which the movie belongs, separated by commas (IMDB only)
+      - name: votes_num
+        description: Number of IMDB user ratings for this movie (IMDB only)
+      - name: release_date
+        description: Date on which the movie was first released (IMDB only)
+      - name: directors
+        description: People who directed the movie, separated by comma (IMDB only)
