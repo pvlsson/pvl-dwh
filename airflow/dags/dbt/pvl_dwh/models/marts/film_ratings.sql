@@ -1,17 +1,5 @@
 with
 
-update_imdb_data as (
-
-    select *
-    from {{ ref('stg_imdb_ratings') }}
-    union
-    select *
-    from {{ ref('stg_imdb_ratings') }} as imdb_historical
-    left join {{ ref('stg_updated_imdb_ratings') }} as imdb_current on imdb_historical.imdb_id = imdb_current.imdb_id
-    and imdb_historical.imdb_id is null
-
-),
-
 merge_with_kp as (
     select
         id,
@@ -30,7 +18,7 @@ merge_with_kp as (
         votes_num,
         release_date
         directors
-    from update_imdb_data
+    from {{ ref('stg_imdb_ratings') }}
     union
     select
         id,

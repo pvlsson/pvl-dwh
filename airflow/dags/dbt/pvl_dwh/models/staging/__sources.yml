@@ -2,12 +2,10 @@ version: 2
 
 sources:
   - name: film_ratings
-    schema: raw
+    schema: pvl_dwh_raw
     description: Personal film ratings data from various websites
     tables:
       - name: imdb_ratings
-        description: One record per movie with rating and details from IMDB (historical)
+        description: One record per movie with rating and details from IMDB
       - name: kp_ratings
         description: One record per movie with rating and details from Kinopoisk
-      - name: updated_imdb_ratings
-        description: One record per movie with rating and details from IMDB (current)
