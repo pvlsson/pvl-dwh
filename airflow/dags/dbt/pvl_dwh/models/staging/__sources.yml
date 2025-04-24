@@ -5,7 +5,7 @@ sources:
     schema: pvl_dwh_raw
     description: Personal film ratings data from various websites
     tables:
-      - name: imdb_ratings
+      - name: imdb
         description: One record per movie with rating and details from IMDB
-      - name: kp_ratings
+      - name: kp
         description: One record per movie with rating and details from Kinopoisk
