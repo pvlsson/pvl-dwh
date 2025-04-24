@@ -19,10 +19,11 @@ This is a continuation and improvement of my earlier project (https://github.com
 - SQL
 
 ## Process
-1. Raw data is uploaded manually to GCS
-    - Raw data is mostly static, I add updates in batches at irregular intervals
-2. Airbyte sync is manually triggered, which reads the file from GCS and loads raw data into BigQuery staging layer
-    - To automate this step, Airbyte should be deployed in the cloud.
+1. First setup:
+    - Raw data is uploaded manually to GCS. Airbyte sync is manually triggered, which reads the file from GCS and loads raw data into BigQuery staging layer.
+    - Raw data is loaded in static batches at irregular intervals.
+2. Adding new data:
+    - New CSV tables are added directly in BigQuery via file upload.
 3. Airflow pipeline is triggered, applying dbt transformations, cleaning and writing views and tables into BigQuery mart layer
 4. Looker Studio connects to BigQuery to display a dashboard:
     - Film Ratings Report: https://lookerstudio.google.com/reporting/2b455111-1ec1-4664-bdf8-74ebeea181b7
@@ -30,8 +31,10 @@ This is a continuation and improvement of my earlier project (https://github.com
 ## Limitations
 Airflow runs locally to simplify iteration and debugging. In a production setting, the Airflow instance would typically be deployed in the cloud, e.g. on Kubernetes using Cloud Composer. The ideal design would involve a sensor that triggers the Airflow instance automatically once a new file appears in GCS.
 
+To automate the process, Airbyte should also be deployed in the cloud.
+
 ## Next steps
-- [ ] Update IMDB data
+- [ ] Attempt web scraping new IMDB ratings (my ratings page is public)
 - [ ] Add SQLfluff formatting with lowercase SQL formatting as a pre-commit check
 - [ ] Add a configuration file for an extra Docker container taht will hold dbt project (possibly instead of Python venv), use Dev Environments
 - [ ] Add freshness checks

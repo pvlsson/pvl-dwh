@@ -1,0 +1,9 @@
+models:
+  - name: stg_imdb_ratings_updated
+    description: Current IMDB data with correct field formatting
+    columns:
+      - name: imdb_id
+        description: The unique key for each movie
+        data_tests:
+          - not_null
+          - unique

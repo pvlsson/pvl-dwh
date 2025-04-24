@@ -1,7 +1,7 @@
 select
     md5(cast(id as string))                                 as id,
     cast(id as string)                                      as kp_id,
-    'kp'                                                    as source,
+    'kp'                                                    as rating_source,
     nameeng                                                 as title_english,
     namerus                                                 as title_russian,
     cast(rating as int64)                                   as rating,

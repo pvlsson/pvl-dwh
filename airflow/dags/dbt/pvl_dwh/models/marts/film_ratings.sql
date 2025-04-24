@@ -2,7 +2,7 @@ with
     merge_with_kp as (
         select
             id,
-            source,
+            rating_source,
             rating,
             rating_date,
             title_english,
@@ -17,11 +17,11 @@ with
             votes_num,
             release_date,
             directors
-        from {{ ref('stg_imdb_ratings') }}
+        from {{ ref('stg_imdb_ratings_updated') }}
         union all
         select
             id,
-            source,
+            rating_source,
             rating,
             rating_date,
             title_english,

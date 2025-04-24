@@ -9,3 +9,5 @@ sources:
         description: One record per movie with rating and details from IMDB
       - name: kp
         description: One record per movie with rating and details from Kinopoisk
+      - name: imdb_updated
+        description: One record per movie with rating and details from IMDB, current data
