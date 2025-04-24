@@ -28,7 +28,7 @@ with
             title_russian,
             null as title_original,
             link,
-            null as title_type,
+            'Movie' as title_type,
             null as imdb_rating,
             null as runtime_mins,
             release_year,
@@ -39,6 +39,25 @@ with
         from {{ ref('stg_kp_ratings') }}
     )
 
-select *
+select
+    merge_with_kp.*,
+    extract(month from rating_date) as rating_month,
+    extract(year from rating_date) as rating_year,
+    case
+        when rating between 0 and 4 then '0-4 (bad)'
+        when rating between 5 and 6 then '5-6 (mediocre)'
+        when rating between 7 and 8 then '7-8 (good)'
+        when rating between 9 and 10 then '9-10 (brilliant)'
+    end as rating_group,
+    case
+        when extract(month from rating_date) in (12, 1, 2) then 'Winter'
+        when extract(month from rating_date) in (3, 4, 5) then 'Spring'
+        when extract(month from rating_date) in (6, 7, 8) then 'Summer'
+        when extract(month from rating_date) in (9, 10, 11) then 'Fall'
+    end as rating_season,
+    case
+        when release_year >= extract(year from rating_date) then "released in the same year"
+        else "older film"
+    end as film_release_type
 from merge_with_kp
 order by id, rating_date

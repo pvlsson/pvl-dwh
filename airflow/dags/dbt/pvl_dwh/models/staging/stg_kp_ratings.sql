@@ -4,8 +4,8 @@ select
     'kp'                                                    as source,
     nameeng                                                 as title_english,
     namerus                                                 as title_russian,
-    rating                                                  as rating,
+    cast(rating as int64)                                   as rating,
     cast(parse_datetime('%d.%m.%Y, %H:%M', date) as date)   as rating_date,
-    year                                                    as release_year,
+    cast(year as int64)                                   as release_year,
     link                                                    as link
 from {{ source('film_ratings', 'kp') }}
