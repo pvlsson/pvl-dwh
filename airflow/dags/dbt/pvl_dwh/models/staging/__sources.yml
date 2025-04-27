@@ -6,8 +6,15 @@ sources:
     description: Personal film ratings data from various websites
     tables:
       - name: imdb
-        description: One record per movie with rating and details from IMDB
+        description: One record per movie with rating and details from IMDB, loaded via Airbyte
       - name: kp
-        description: One record per movie with rating and details from Kinopoisk
+        description: One record per movie with rating and details from Kinopoisk, loaded via Airbyte
       - name: imdb_updated
-        description: One record per movie with rating and details from IMDB, current data
+        description: One record per movie with rating and details from IMDB, loaded directly into BigQuery
+
+  - name: personal_finance
+    schema: pvl_dwh_raw
+    description: Personal finance transaction records and planning
+    tables:
+      - name: cashtrails_import
+        description: One record per transaction with payment details, loaded directly into BigQuery

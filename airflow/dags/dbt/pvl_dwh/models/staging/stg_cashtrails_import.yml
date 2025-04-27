@@ -1,0 +1,9 @@
+models:
+  - name: stg_cashtrails_import
+    description: Export from CashTrails with personal financial transactions
+    columns:
+      - name: transaction_id
+        description: The unique key for each transaction based on sort order, renewed upon each table refresh
+        data_tests:
+          - not_null
+          - unique
