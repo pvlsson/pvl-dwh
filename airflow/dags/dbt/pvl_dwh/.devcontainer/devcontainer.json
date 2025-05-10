@@ -1,0 +1,17 @@
+{
+  "name": "dbt-dev",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "dbt",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "innoverio.vscode-dbt-power-user",
+    "ms-python.python"
+  ],
+  "postCreateCommand": "pip install -r .devcontainer/requirements.txt",
+  "remoteEnv": {
+    "DBT_PROFILES_DIR": "/workspace/.devcontainer"
+  }
+}

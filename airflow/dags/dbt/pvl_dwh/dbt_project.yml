@@ -4,11 +4,12 @@ name: "pvl_dwh"
 version: "3.0.0"
 require-dbt-version: ">=1.5.0"
 
-profile: default # Put your profile here
+profile: pvl_dwh
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["data-tests"]
+docs-paths: ["docs"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]

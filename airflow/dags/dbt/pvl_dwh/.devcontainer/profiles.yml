@@ -1,0 +1,10 @@
+pvl_dwh:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: pvlsson
+      dataset: pvl_dwh_dev
+      threads: 4
+      keyfile: /workspace/.devcontainer/secrets/pvlsson-34e37e7a3ab1.json

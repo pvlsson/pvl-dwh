@@ -11,3 +11,7 @@ airflow.cfg
 airflow.db
 airflow/secrets/
 secrets/
+.user.yml
+target
+.vscode
+logs

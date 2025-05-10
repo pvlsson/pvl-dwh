@@ -36,7 +36,7 @@ To automate the process, Airbyte should also be deployed in the cloud.
 ## Next steps
 - [ ] Attempt web scraping new IMDB ratings (my ratings page is public)
 - [ ] Add SQLfluff formatting with lowercase SQL formatting as a pre-commit check
-- [ ] Add a configuration file for an extra Docker container taht will hold dbt project (possibly instead of Python venv), use Dev Environments
+- [x] Add a configuration file for an extra Docker container that will hold dbt project, use Dev Environments
 - [ ] Add freshness checks
 - [ ] Decide how to handle duplicate movie reviews (in case same movie is reviewed in IMDB and KP)
 - [ ] Add additional source with metadate about each movie
