@@ -29,5 +29,5 @@ models:
         description: '{{ doc("note") }}'
       - name: party
         description: '{{ doc("party") }}'
-      - name: group
-        description: '{{ doc("group") }}'
+      - name: transaction_group
+        description: '{{ doc("transaction_group") }}'

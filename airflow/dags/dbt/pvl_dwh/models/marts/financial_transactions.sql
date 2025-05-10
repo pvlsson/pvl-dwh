@@ -14,10 +14,10 @@ with
 			when tags in ('Home Improvements', 'Kitchenware', 'Clothes', 'Printing', 'Documents', 'University', 'Haircut', 'Health', 'Other', 'Travel', 'Gifts') then 'Purchases'
 			when tags in ('Bad debt', 'Waste') then 'Writeoff'
 			when tags in ('Transfer', 'Balance') then 'Technical'
-			when group is not null then 'Special'
+			when transaction_group is not null then 'Special'
 			else null
 		end as transaction_category
-	from {{ ref('cashtrails_import') }} as cashtrails
+	from {{ ref('stg_cashtrails_import') }} as cashtrails
 	)
 
 select *

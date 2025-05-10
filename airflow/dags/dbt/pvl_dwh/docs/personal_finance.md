@@ -46,6 +46,6 @@ A free-text note providing additional details about the transaction
 The external party or counterparty involved in the transaction
 {% enddocs %}
 
-{% docs group %}
+{% docs transaction_group %}
 A grouping identifier used to associate the transaction with a batch or related set
 {% enddocs %}
