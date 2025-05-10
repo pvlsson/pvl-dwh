@@ -17,7 +17,7 @@ with
 			when group is not null then 'Special'
 			else null
 		end as transaction_category
-	from (( {ref: cashtrails_import} )) as cashtrails
+	from {{ ref('cashtrails_import') }} as cashtrails
 	)
 
 select *

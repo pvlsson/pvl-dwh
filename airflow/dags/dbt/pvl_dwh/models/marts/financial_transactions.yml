@@ -1,0 +1,33 @@
+models:
+  - name: financial_transactions
+    description: Personal financial transactions history
+    columns:
+      - name: transaction_id
+        description: '{{ doc("transaction_id") }}'
+        data_tests:
+          - not_null
+          - unique
+      - name: transaction_datetime
+        description: '{{ doc("transaction_datetime") }}'
+      - name: transaction_type
+        description: '{{ doc("transaction_type") }}'
+      - name: withdrawal_amount
+        description: '{{ doc("withdrawal_amount") }}'
+      - name: withdrawal_currency
+        description: '{{ doc("withdrawal_currency") }}'
+      - name: withdrawal_account
+        description: '{{ doc("withdrawal_account") }}'
+      - name: deposit_amount
+        description: '{{ doc("deposit_amount") }}'
+      - name: deposit_currency
+        description: '{{ doc("deposit_currency") }}'
+      - name: deposit_account
+        description: '{{ doc("deposit_account") }}'
+      - name: tags
+        description: '{{ doc("tags") }}'
+      - name: note
+        description: '{{ doc("note") }}'
+      - name: party
+        description: '{{ doc("party") }}'
+      - name: group
+        description: '{{ doc("group") }}'
