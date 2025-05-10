@@ -1,7 +1,7 @@
 with
     merge_with_kp as (
         select
-            id,
+            rating_id,
             rating_source,
             rating,
             rating_date,
@@ -20,7 +20,7 @@ with
         from {{ ref('stg_imdb_ratings_updated') }}
         union all
         select
-            id,
+            rating_id,
             rating_source,
             rating,
             rating_date,
@@ -60,4 +60,4 @@ select
         else "older film"
     end as film_release_type
 from merge_with_kp
-order by id, rating_date
+order by rating_id, rating_date

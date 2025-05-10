@@ -1,5 +1,5 @@
 select
-    md5(cast(const as string))      as id,
+    md5(cast(const as string))      as rating_id,
     cast(const as string)           as imdb_id,
     'imdb'                          as rating_source,
     `your rating`                   as rating,

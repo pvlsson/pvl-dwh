@@ -1,5 +1,5 @@
 select
-    md5(cast(id as string))                                 as id,
+    md5(cast(id as string))                                 as rating_id,
     cast(id as string)                                      as kp_id,
     'kp'                                                    as rating_source,
     nameeng                                                 as title_english,
