@@ -11,6 +11,9 @@ select
     tags                            as tags,
     note                            as note,
     party                           as party,
-    `group`                         as transaction_group
-from {{ source('personal_finance', 'cashtrails_import') }}
-where column_1 != '"#"' -- exclude header row
+    case
+        when `group` = ' ' then null
+        else `group`
+    end                             as transaction_group
+from {{ source('personal_finance', 'cashtrails_import_250529') }}
+where column_1 != '"#"' -- exclude header row if it was accidentally imported
