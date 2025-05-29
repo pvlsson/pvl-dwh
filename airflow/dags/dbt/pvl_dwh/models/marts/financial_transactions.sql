@@ -2,6 +2,10 @@ with
 	add_categories as (
 	select
 		cashtrails.*,
+		-- date(transaction_datetime) as transaction_date,
+		-- extract(month from transaction_datetime) as transaction_month,
+		-- extract(year from transaction_datetime) as transaction_year,
+		-- extract(isoweek from transaction_datetime) as transaction_week,
 		case
 			when tags in ('Income', 'Salary') then 'Earnings'
 			when tags in ('Meals', 'Sweets and Drinks') then 'Eating out'
@@ -24,3 +28,4 @@ with
 
 select *
 from add_categories
+	left join {{ ref('calendar') }} as calendar on date(add_categories.transaction_datetime) = calendar.date

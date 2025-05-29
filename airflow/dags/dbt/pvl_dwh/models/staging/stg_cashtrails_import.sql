@@ -2,10 +2,13 @@ select
     column_1                        as transaction_id,
     datetime(cast(`date` as date), safe.parse_time('%H:%M', `time`)) as transaction_datetime,
     `type`                          as transaction_type,
-    amount_withdrawal_amount        as withdrawal_amount,
+    cast(amount_withdrawal_amount as numeric) as withdrawal_amount,
     currency_code_1                 as withdrawal_currency,
     account_withdrawal_account      as withdrawal_account,
-    deposit_amount                  as deposit_amount,
+    cast(case
+            when deposit_amount = '' then null
+            else deposit_amount
+        end as numeric) as deposit_amount,
     currency_code_3                 as deposit_currency,
     deposit_account                 as deposit_account,
     tags                            as tags,

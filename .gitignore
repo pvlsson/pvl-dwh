@@ -15,3 +15,5 @@ secrets/
 target
 .vscode
 logs
+dbt_packages
+package-lock.yml
