@@ -34,7 +34,13 @@ Re-running the script performs a full replace of the table — safe and
 idempotent to run at any time.
 
 Requirements:
-    pip install requests pandas
+    # Create and activate the venv (one-time setup):
+    python3 -m venv scripts/.venv
+    scripts/.venv/bin/pip install -r scripts/requirements.txt
+
+    # Run the script using the venv's Python directly:
+    scripts/.venv/bin/python scripts/fetch_currency_rates.py
+
     bq CLI on PATH (installed via google-cloud-sdk / Homebrew)
     gcloud auth login  (or Application Default Credentials)
 """
