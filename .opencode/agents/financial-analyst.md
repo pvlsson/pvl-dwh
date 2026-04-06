@@ -1,6 +1,6 @@
 ---
 description: Analyzes financial transactions from the pvl_dwh mart layer
-mode: subagent
+mode: primary
 ---
 
 ## Data Access
