@@ -1,40 +1,40 @@
 models:
   - name: film_ratings
-    description: History of personal film ratings with rating date from various source platforms
+    description: History of personal film ratings with rating date from various source platforms.
     columns:
       - name: rating_id
-        description: '{{ doc("rating_id") }}'
+        description: The unique key hash for each movie rating.
         data_tests:
           - not_null
           - unique
       - name: rating_source
-        description: '{{ doc("rating_source") }}'
+        description: Source platform name — either "imdb" or "kp".
         data_tests:
           - accepted_values:
               values: ["imdb", "kp"]
       - name: rating
-        description: '{{ doc("rating") }}'
+        description: My rating for the movie, on a scale from 0 to 10.
       - name: rating_date
-        description: '{{ doc("rating_date") }}'
+        description: Date on which I rated the movie.
       - name: title_english
-        description: '{{ doc("title_english") }}'
+        description: Movie title in English.
       - name: title_russian
-        description: '{{ doc("title_russian") }}'
+        description: Movie title in Russian.
       - name: title_original
-        description: '{{ doc("title_original") }}'
+        description: Original movie title name, available for IMDB ratings only.
       - name: title_type
-        description: '{{ doc("title_type") }}'
+        description: Type of content rated — either "movie" or "TV series" (IMDB only).
       - name: imdb_rating
-        description: '{{ doc("imdb_rating") }}'
+        description: Average IMDB rating for the movie, based on all user ratings (IMDB only).
       - name: runtime
-        description: '{{ doc("runtime") }}'
+        description: Movie length in minutes (IMDB only).
       - name: release_year
-        description: '{{ doc("release_year") }}'
+        description: Year in which the movie was released in theatres.
       - name: genres
-        description: '{{ doc("genres") }}'
+        description: Genres to which the movie belongs, separated by commas (IMDB only).
       - name: votes_num
-        description: '{{ doc("votes_num") }}'
+        description: Number of IMDB user ratings for this movie (IMDB only).
       - name: release_date
-        description: '{{ doc("release_date") }}'
+        description: Date on which the movie was first released (IMDB only).
       - name: directors
-        description: '{{ doc("directors") }}'
+        description: People who directed the movie, separated by commas (IMDB only).

@@ -18,3 +18,5 @@ sources:
     tables:
       - name: cashtrails_import_260401
         description: One record per transaction with payment details, loaded directly into BigQuery
+      - name: currency_rates
+        description: Daily EUR exchange rates for USD, RUB, HUF, BGN, TRY — fetched from ECB (all currencies) and CBR (RUB from 2022 onwards) via fetch_currency_rates.py and loaded into BigQuery

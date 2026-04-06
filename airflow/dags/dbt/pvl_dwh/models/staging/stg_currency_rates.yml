@@ -1,0 +1,17 @@
+models:
+  - name: stg_currency_rates
+    description: >
+      Daily EUR exchange rates for USD, RUB, HUF, BGN, and TRY.
+      Sourced from ECB (all currencies, RUB up to 2022-03-01) and CBR
+      (RUB from 2022-03-02 onwards). Weekend and public holiday gaps are
+      forward-filled with the most recent available rate.
+    columns:
+      - name: date
+        description: Calendar date for which the exchange rate applies.
+      - name: currency
+        description: ISO 4217 currency code (USD, RUB, HUF, BGN, or TRY).
+      - name: rate_to_eur
+        description: >
+          Units of EUR per 1 unit of the foreign currency.
+          Multiply a foreign-currency amount by this value to convert to EUR.
+          Example: 1 USD * rate_to_eur = amount in EUR.

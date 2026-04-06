@@ -1,8 +1,8 @@
 models:
-  - name: financial_transactions
+  - name: prep_financial_transactions
     description: >
-      Personal financial transactions history enriched with spending categories,
-      EUR-converted amounts, and calendar dimension attributes.
+      Enriched financial transactions combining category mapping and EUR
+      conversion. Serves as the direct input to the financial_transactions mart.
     columns:
       - name: transaction_id
         description: Unique key for each transaction based on sort order, renewed upon each table refresh.
@@ -38,27 +38,9 @@ models:
       - name: rate_to_eur
         description: >
           EUR exchange rate applied to this transaction (units of EUR per 1 unit of
-          withdrawal_currency). Null for EUR transactions.
+          withdrawal_currency). Null for EUR transactions (rate not needed).
       - name: withdrawal_amount_eur
         description: >
           Withdrawal amount converted to EUR. For EUR transactions this equals
           withdrawal_amount directly; for other currencies it is
           withdrawal_amount * rate_to_eur.
-      - name: date
-        description: Calendar date of the transaction (from calendar dimension).
-      - name: day_of_week_iso
-        description: ISO day of week (1 = Monday, 7 = Sunday).
-      - name: day_of_week_name_short
-        description: Abbreviated day name (e.g. Mon, Tue).
-      - name: week_iso
-        description: ISO week number of the year.
-      - name: month
-        description: Month number (1–12).
-      - name: month_name_short
-        description: Abbreviated month name (e.g. Jan, Feb).
-      - name: year
-        description: Calendar year.
-      - name: year_month
-        description: Year and month formatted as YYYY-MM.
-      - name: year_week_iso
-        description: ISO year and week formatted as GGGG-WW.
