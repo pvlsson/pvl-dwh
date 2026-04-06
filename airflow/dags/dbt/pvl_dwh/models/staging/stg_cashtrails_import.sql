@@ -18,5 +18,5 @@ select
         when `group` = ' ' then null
         else `group`
     end                             as transaction_group
-from {{ source('personal_finance', 'cashtrails_import_250908') }}
+from {{ source('personal_finance', 'cashtrails_import_260401') }}
 where column_1 != '"#"' -- exclude header row if it was accidentally imported
