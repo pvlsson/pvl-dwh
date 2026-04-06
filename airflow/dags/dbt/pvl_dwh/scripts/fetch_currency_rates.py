@@ -211,14 +211,25 @@ def load_to_bigquery(df: pd.DataFrame, project: str) -> None:
     """
     Write the DataFrame to a temporary NDJSON file and load into BigQuery
     using bq CLI with --replace (full table replace, idempotent).
+
+    The schema is written to a separate temp file because passing it as an
+    inline JSON string causes bq to reject DATE-typed fields.
     """
     table_ref = f"{project}:{TARGET_DATASET}.{TARGET_TABLE}"
-    schema = json.dumps([
+    schema = [
         {"name": "date",        "type": "DATE"},
         {"name": "currency",    "type": "STRING"},
         {"name": "rate_to_eur", "type": "FLOAT64"},
-    ])
+    ]
 
+    # Write schema to temp file
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".json", delete=False
+    ) as schema_tmp:
+        json.dump(schema, schema_tmp)
+        schema_path = schema_tmp.name
+
+    # Write data to temp NDJSON file
     with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as tmp:
         for _, row in df.iterrows():
             record = {
@@ -237,7 +248,7 @@ def load_to_bigquery(df: pd.DataFrame, project: str) -> None:
                 "--project_id", project,
                 "--source_format=NEWLINE_DELIMITED_JSON",
                 "--replace",
-                "--schema", schema,
+                "--schema", schema_path,
                 table_ref,
                 tmp_path,
             ],
@@ -248,10 +259,12 @@ def load_to_bigquery(df: pd.DataFrame, project: str) -> None:
         print(result.stdout or "Load complete.")
     except subprocess.CalledProcessError as exc:
         print("bq load failed:", file=sys.stderr)
+        print(exc.stdout, file=sys.stderr)
         print(exc.stderr, file=sys.stderr)
         raise
     finally:
         os.unlink(tmp_path)
+        os.unlink(schema_path)
 
     print(f"Successfully loaded {len(df):,} rows into {table_ref}.")
 

@@ -1,5 +1,5 @@
 select
-    prep.* except (date),
+    prep.*,
     calendar.*
 from {{ ref('prep_financial_transactions') }} as prep
 left join {{ ref('calendar') }} as calendar
